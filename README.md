@@ -1,1 +1,1 @@
-App to log my vacation working hours using React
+App to log my vacation working hours using React + Firebase
