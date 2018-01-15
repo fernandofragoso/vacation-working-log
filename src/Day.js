@@ -5,8 +5,8 @@ class Day extends Component {
   render() {
     return (
       <div className="Day">
-        <strong>{this.props.date}</strong>
-        {this.props.hours.map(hour => ` - ${hour}`)}
+        <div className="Day-date">{this.props.date}</div>
+        {this.props.hours.map(hour => <div key={hour.toString()} className="Day-hour">{hour}</div>)}
       </div>
     );
   }

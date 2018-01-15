@@ -19,17 +19,19 @@ class App extends Component {
             {days.map(day => <Day date={day.date} hours={day.hours} key={day.id} /> )}
           </main>
         </div>
-        <footer className="App-footer">My working hours by React</footer>
+        <footer className="App-footer">fernandofragoso - 2018</footer>
       </div>
     );
   }
 
   _getDays() {
     let days = [
-      { id: '1', date: '08/01', hours: ['08:00', '12:00', '13:00', '17:00'] },
-      { id: '2', date: '09/01', hours: ['08:00', '11:00', '12:30', '17:30'] },
-      { id: '3', date: '10/01', hours: ['09:00', '12:00', '13:00', '18:00'] },
-      { id: '4', date: '11/01', hours: ['09:00', '13:00', '14:00', '16:00', '16:30', '18:30'] }
+      { id: '1', date: '08/01', hours: ['08:50', '12:05', '13:05', '17:47'] },
+      { id: '2', date: '09/01', hours: ['08:15', '12:00', '13:20', '17:50'] },
+      { id: '3', date: '10/01', hours: ['08:55', '12:30', '13:35', '17:40'] },
+      { id: '4', date: '11/01', hours: ['07:35', '11:30', '12:40', '17:50'] },
+      { id: '5', date: '15/01', hours: ['07:30'] }
+
     ];
     return days;
   }

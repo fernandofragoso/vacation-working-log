@@ -24,8 +24,9 @@
 
 .App-footer {
   background-color: #222;
-  height: 20px;
-  padding: 20px;
-  color: white;
+  height: 15px;
+  padding: 5px;
+  font-size: 10px;
+  color: #CCC;
   text-align: center;
 }
