@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Day.css';
 
-class Day extends Component {
+export default class Day extends Component {
   render() {
     return (
       <div className="Day">
@@ -16,5 +16,3 @@ class Day extends Component {
   }
 
 }
-
-export default Day;

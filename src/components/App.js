@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from '../config';
-import Day from './Day.js';
+import Day from './Day';
+import DayList from './Day-list';
+import DayForm from './Day-form';
 import './App.css';
 
 export default class App extends Component {
@@ -8,7 +10,8 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      days: []
+      days: [],
+      formVisible: false
     }
   }
 
@@ -22,11 +25,14 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Vacation Working Log</h1>
+          <h1 className="App-title">vacation-working-log</h1>
         </header>
         <div className="App-body">
           <main className="App-content">
-            {days.map(day => <Day date={day.date} hours={day.hours} key={day.id} /> )}
+            <DayList days={days} />
+            <DayForm
+              isVisible={this.state.formVisible}
+              onCreateDay={this._createNewDay.bind(this)} />
           </main>
         </div>
         <footer className="App-footer">/fernandofragoso - 2018</footer>
@@ -43,7 +49,7 @@ export default class App extends Component {
   }
 
   //Set a new day on firebase
-  _setNewDay(day) {
+  _createNewDay(day) {
     firebase.database().ref('/days').push({
       date: day.date,
       hours: day.hours
