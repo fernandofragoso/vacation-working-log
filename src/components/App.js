@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from './config';
+import firebase from '../config';
 import Day from './Day.js';
 import './App.css';
 
@@ -13,11 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let database = firebase.database();
-    database.ref('/days').once('value').then(snapshot => {
-      let days = snapshot.val();
-      this.setState({days: days});
-    });
+    this._updateDays();
   }
 
   render() {
@@ -36,6 +32,17 @@ class App extends Component {
         <footer className="App-footer">/fernandofragoso - 2018</footer>
       </div>
     );
+  }
+
+  _updateDays() {
+    firebase.database().ref('/days').on('value', snapshot => {
+      let days = snapshot.val();
+      this.setState({days: days});
+    });
+  }
+
+  _setNewDay() {
+
   }
 }
 
