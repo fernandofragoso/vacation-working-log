@@ -3,7 +3,7 @@ import firebase from '../config';
 import Day from './Day.js';
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
 
   constructor() {
     super();
@@ -34,16 +34,30 @@ class App extends Component {
     );
   }
 
+  //Watch and update the days
   _updateDays() {
     firebase.database().ref('/days').on('value', snapshot => {
-      let days = snapshot.val();
+      let days = this._snapshotToArray(snapshot);
       this.setState({days: days});
     });
   }
 
-  _setNewDay() {
+  //Set a new day on firebase
+  _setNewDay(day) {
+    firebase.database().ref('/days').push({
+      date: day.date,
+      hours: day.hours
+    });
+  }
 
+  //Convert the snapshot to Array
+  _snapshotToArray(snapshot) {
+    let returnArr = [];
+    snapshot.forEach(childSnapshot => {
+        let item = childSnapshot.val();
+        item.key = childSnapshot.key;
+        returnArr.push(item);
+    });
+    return returnArr;
   }
 }
-
-export default App;
