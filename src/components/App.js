@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import firebase from '../config';
-import Day from './Day';
 import DayList from './Day-list';
 import DayForm from './Day-form';
 import './App.css';

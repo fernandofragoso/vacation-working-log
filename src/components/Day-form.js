@@ -3,12 +3,6 @@ import './Day-form.css';
 
 export default class DayForm extends Component {
 
-  constructor() {
-    super();
-    let date = "";
-    let hours = [];
-  }
-
   render() {
 
     let form = "";
