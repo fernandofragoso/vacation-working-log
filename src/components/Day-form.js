@@ -7,8 +7,12 @@ export default class DayForm extends Component {
 
     let form = "";
     if (this.props.isVisible) {
-      form = <div className="Day-form">
-        <button onClick={this._createDay.bind(this)}>Create Day</button>
+      form = <div>
+        <form className="Day-form" onSubmit={this._handleSubmit.bind(this)}>
+          <input className="Day-form-date" placeholder="Date" ref={c => { this._date = c }} />
+          <input className="Day-form-hours" placeholder="Hours" ref={c => { this._hours = c }} />
+          <button className="Day-form-button" type="submit">Add day</button>
+        </form>
       </div>
     }
 
@@ -17,11 +21,18 @@ export default class DayForm extends Component {
     );
   }
 
-  _createDay() {
+  _handleSubmit(event) {
+    event.preventDefault();
+    this.props.onCreateDay(this._getDay());
+    this._date.value = "";
+    this._hours.value = "";
+  }
+
+  _getDay() {
     let day = {};
-    day.date = "31/12";
-    day.hours = ["08:00", "12:00", "14:00", "18:00"];
-    this.props.onCreateDay(day);
+    day.date = this._date.value;
+    day.hours = this._hours.value.split(" ");
+    return day;
   }
 
 }
