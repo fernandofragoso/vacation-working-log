@@ -18,8 +18,8 @@
 }
 
 .App-content {
-  flex: 1;
-  margin: 20px 40px;
+  margin: 0 auto;
+  flex-basis: 800px;
 }
 
 .App-footer {
