@@ -3,6 +3,11 @@
   flex-direction: row;
   padding: 20px 10px;
   justify-content: space-between;
+  height: 40px;
+}
+
+.Day-form input {
+  padding: 5px;
 }
 
 .Day-form-date {
@@ -18,4 +23,8 @@
 .Day-form-button {
   flex-shrink: 0;
   width: 80px;
+  background-color: #333;
+  color: #FFF;
+  border: 0;
+  border-radius: 5px;
 }

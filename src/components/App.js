@@ -24,7 +24,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">vacation-working-log</h1>
+          <h2 className="App-title">vacation-working-log</h2>
         </header>
         <div className="App-body">
           <main className="App-content">
