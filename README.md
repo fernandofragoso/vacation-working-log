@@ -6,7 +6,8 @@ Todo:
 - [x] Build base component structure
 - [x] Integration with Firebase
 - [x] Form to add logs
-- [ ] Logs edition
+- [x] Logs edition
+- [ ] Calculate Hours Balance
 - [ ] Add authentication
 - [ ] Add CSS Framework
 - [ ] Host app
