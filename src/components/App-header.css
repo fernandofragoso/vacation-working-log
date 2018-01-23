@@ -1,0 +1,17 @@
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 10px 20px;
+  color: white;
+}
+
+.login__input {
+  background-color: #222;
+  color: #FFF;
+  border: 1px solid #FFF;
+  border-radius: 2px;
+  margin: 5px;
+  padding: 10px;
+}

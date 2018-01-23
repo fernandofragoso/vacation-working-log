@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from '../config';
 import DayList from './Day-list';
 import DayForm from './Day-form';
+import AppHeader from './App-header';
 import './App.css';
 
 export default class App extends Component {
@@ -23,9 +24,7 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <h2 className="App-title">vacation-working-log</h2>
-        </header>
+        <AppHeader />
         <div className="App-body">
           <main className="App-content">
             <DayList onUpdateDay={this._updateDay.bind(this)} days={days} />
