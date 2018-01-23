@@ -8,8 +8,8 @@ export default class DayList extends Component {
     );
   }
 
-  _updateDay(key) {
-    this.props.onUpdateDay(key);
+  _updateDay(day) {
+    this.props.onUpdateDay(day);
   }
 
 }

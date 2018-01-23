@@ -3,10 +3,12 @@ import './Day.css';
 
 export default class Day extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      edit: false
+      edit: false,
+      date: props.date,
+      hours: props.hours.join(" ")
     }
   }
 
@@ -20,13 +22,13 @@ export default class Day extends Component {
       date = <input
         className="Day-form-date"
         placeholder="Date"
-        value={this.props.date}
+        value={this.state.date}
         onChange={this._handleChangeDate.bind(this)}
         />
       hours = <input
         className="Day-form-hours"
         placeholder="Hours"
-        value={this.props.hours.join(" ")}
+        value={this.state.hours}
         onChange={this._handleChangeHours.bind(this)}
         />
       button = <button className="button button__edit" onClick={this._updateDay.bind(this)}>Save</button>
@@ -41,19 +43,38 @@ export default class Day extends Component {
     );
   }
 
+  _handleChangeHours(event) {
+    this.setState({
+      hours: event.target.value
+    });
+  }
+
+  _handleChangeDate(event) {
+    this.setState({
+      date: event.target.value
+    });
+  }
+
   _calculateBalance(hours) {
     //TODO: Calculate day balance
   }
 
   _updateDay() {
-    this.props.onUpdateDay(this.props.id);
+    let day = {
+      date: this.state.date,
+      hours: this.state.hours.split(" "),
+      key: this.props.id
+    };
+    this.props.onUpdateDay(day);
+    this.setState({
+      edit: false
+    })
   }
 
   _editDay() {
-    console.log('TODO');
-    // this.setState({
-    //   edit: true
-    // });
+    this.setState({
+      edit: true
+    });
   }
 
 }

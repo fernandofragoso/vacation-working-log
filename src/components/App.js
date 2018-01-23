@@ -49,7 +49,8 @@ export default class App extends Component {
 
   //Update day on firebase
   _updateDay(day) {
-    firebase.database().ref(`/days/${day.id}`).update({
+
+    firebase.database().ref(`/days/${day.key}`).update({
       date: day.date,
       hours: day.hours
     });
