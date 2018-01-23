@@ -5,6 +5,10 @@
   border-bottom: 1px solid #CCC;
 }
 
+.Day--hover {
+  background-color: #F6F6F6;
+}
+
 .Day-date {
   font-weight: bold;
   text-align: center;

@@ -7,6 +7,7 @@ export default class Day extends Component {
     super(props);
     this.state = {
       edit: false,
+      hover: false,
       date: props.date,
       hours: props.hours.join(" ")
     }
@@ -16,7 +17,11 @@ export default class Day extends Component {
     let formClass = "";
     let date = <div className="Day-date">{this.props.date}</div>
     let hours = this.props.hours.map(hour => <div key={hour.toString()} className="Day-hour">{hour}</div>)
-    let button = <button className="button button__edit" onClick={this._editDay.bind(this)}>Edit</button>;
+    let button = ""
+    if (this.state.hover) {
+      formClass = "Day--hover";
+      button = <button className="button button__edit" onClick={this._editDay.bind(this)}>Edit</button>;
+    }
     if (this.state.edit) {
       formClass = "Day-form";
       date = <input
@@ -35,12 +40,27 @@ export default class Day extends Component {
     }
 
     return (
-      <div className={`Day ${formClass}`}>
+      <div
+        className={`Day ${formClass}`}
+        onMouseEnter={this._onMouseEnterHandler.bind(this)}
+        onMouseLeave={this._onMouseLeaveHandler.bind(this)}>
         {date}
         {hours}
         {button}
       </div>
     );
+  }
+
+  _onMouseEnterHandler() {
+    this.setState({
+      hover: true
+    });
+  }
+
+  _onMouseLeaveHandler() {
+    this.setState({
+      hover: false
+    });
   }
 
   _handleChangeHours(event) {
