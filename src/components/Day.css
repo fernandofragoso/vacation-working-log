@@ -12,11 +12,12 @@
 .Day-date {
   font-weight: bold;
   text-align: center;
-  margin: 10px;
+  padding: 10px 30px;
+  margin-right: 10px;
 }
 
 .Day-hour {
-  margin: 10px;
+  padding: 10px 20px;
 }
 
 .button__edit {
