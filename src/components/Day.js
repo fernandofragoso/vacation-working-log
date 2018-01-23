@@ -17,6 +17,7 @@ export default class Day extends Component {
     let formClass = "";
     let date = <div className="Day-date">{this.props.date}</div>
     let hours = this.props.hours.map(hour => <div key={hour.toString()} className="Day-hour">{hour}</div>)
+    let balance = this._calculateBalance();
     let button = "";
     let onClickAction = ()=>{};
     if (this.state.hover) {
@@ -36,6 +37,7 @@ export default class Day extends Component {
         value={this.state.hours}
         onChange={this._handleChangeHours.bind(this)}
         />
+      balance = ""
       button = <button className="button button__edit" onClick={this._updateDay.bind(this)}>Save</button>
     } else {
       onClickAction = this._editDay.bind(this);
@@ -49,6 +51,7 @@ export default class Day extends Component {
         onMouseLeave={this._onMouseHandler.bind(this)}>
         {date}
         {hours}
+        <div className="Day-balance">{balance}</div>
         {button}
       </div>
     );
@@ -72,8 +75,9 @@ export default class Day extends Component {
     });
   }
 
-  _calculateBalance(hours) {
+  _calculateBalance() {
     //TODO: Calculate day balance
+    return "(00:00)";
   }
 
   _updateDay() {

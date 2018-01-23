@@ -20,6 +20,11 @@
   padding: 10px 20px;
 }
 
+.Day-balance {
+  margin-left: auto;
+  padding: 10px;
+}
+
 .button__edit {
   margin-left: auto;
 }
