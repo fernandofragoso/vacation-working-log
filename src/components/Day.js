@@ -75,9 +75,60 @@ export default class Day extends Component {
     });
   }
 
+  //Calculate Day balance
   _calculateBalance() {
-    //TODO: Calculate day balance
-    return "(00:00)";
+    let balanceInMinutes = 0;
+    let previousHours = 0;
+    let previousMinutes = 0;
+
+    this.props.hours.forEach((hour, index) => {
+      let hourArray = hour.split(":");
+      if (index%2 === 1){
+          let currentHours = parseInt(hourArray[0]);
+          let currentMinutes = parseInt(hourArray[1]);
+          if (currentMinutes >= previousMinutes) {
+            balanceInMinutes += currentMinutes - previousMinutes;
+            balanceInMinutes += (currentHours - previousHours) * 60;
+          } else {
+            balanceInMinutes += 60 - previousMinutes + currentMinutes;
+            balanceInMinutes += (currentHours - (previousHours+1)) * 60;
+          }
+      }
+      previousHours = parseInt(hourArray[0]);
+      previousMinutes = parseInt(hourArray[1]);
+    });
+
+    balanceInMinutes = balanceInMinutes - (60 * 8);
+    return this._formatBalance(balanceInMinutes);
+  }
+
+  //Format minutes to '00:00' (110 -> '01:50')
+  _formatBalance(minutes) {
+    let m = "00";
+    let h = "00";
+    let s = "";
+    let classNames = "Day-balance--positive";
+
+    //Negative values
+    if (minutes < 0) {
+      s = "-";
+      minutes = -minutes;
+      classNames = "Day-balance--negative"
+    }
+
+    if (minutes < 60) {
+        m = minutes.toString();
+    } else {
+      let hours = Math.floor(minutes/60);
+      let remainingMinutes = minutes - (60*hours);
+      h = hours.toString();
+      m = remainingMinutes.toString();
+    }
+
+    m = ((m.length === 1) ? `0${m}` : m);
+    h = ((h.length === 1) ? `0${h}` : h);
+
+    return <span className={classNames}>{`${s}${h}:${m}`}</span>
   }
 
   _updateDay() {

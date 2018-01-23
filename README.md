@@ -7,7 +7,7 @@ Todo:
 - [x] Integration with Firebase
 - [x] Form to add logs
 - [x] Logs edition
-- [ ] Calculate Hours Balance
+- [x] Calculate Hours Balance
 - [ ] Add authentication
 - [ ] Add CSS Framework
 - [ ] Host app

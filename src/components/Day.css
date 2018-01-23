@@ -25,6 +25,14 @@
   padding: 10px;
 }
 
+.Day-balance--negative {
+  color: red;
+}
+
+.Day-balance--positive {
+  color: green;
+}
+
 .button__edit {
   margin-left: auto;
 }
