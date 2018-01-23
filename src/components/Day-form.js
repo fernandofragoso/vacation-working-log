@@ -11,7 +11,7 @@ export default class DayForm extends Component {
         <form className="Day-form" onSubmit={this._handleSubmit.bind(this)}>
           <input className="Day-form-date" placeholder="Date" ref={c => { this._date = c }} />
           <input className="Day-form-hours" placeholder="Hours" ref={c => { this._hours = c }} />
-          <button className="Day-form-button" type="submit">Add day</button>
+          <button className="button" type="submit">Add day</button>
         </form>
       </div>
     }

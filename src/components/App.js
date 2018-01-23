@@ -10,12 +10,12 @@ export default class App extends Component {
     super();
     this.state = {
       days: [],
-      formVisible: true
+      loggedIn: true
     }
   }
 
   componentDidMount() {
-    this._updateDays();
+    this._getDays();
   }
 
   render() {
@@ -28,9 +28,9 @@ export default class App extends Component {
         </header>
         <div className="App-body">
           <main className="App-content">
-            <DayList days={days} />
+            <DayList onUpdateDay={this._updateDay.bind(this)} days={days} />
             <DayForm
-              isVisible={this.state.formVisible}
+              isVisible={this.state.loggedIn}
               onCreateDay={this._createNewDay.bind(this)} />
           </main>
         </div>
@@ -40,10 +40,18 @@ export default class App extends Component {
   }
 
   //Watch and update the days
-  _updateDays() {
+  _getDays() {
     firebase.database().ref('/days').on('value', snapshot => {
       let days = this._snapshotToArray(snapshot);
       this.setState({days: days});
+    });
+  }
+
+  //Update day on firebase
+  _updateDay(day) {
+    firebase.database().ref(`/days/${day.id}`).update({
+      date: day.date,
+      hours: day.hours
     });
   }
 
