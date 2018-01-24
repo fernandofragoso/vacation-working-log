@@ -11,7 +11,7 @@ export default class App extends Component {
     super();
     this.state = {
       days: [],
-      loggedIn: true
+      isLogged: false
     }
   }
 
@@ -24,18 +24,42 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <AppHeader />
+        <AppHeader
+          onLogin={this._login.bind(this)}
+          onLogout={this._logout.bind(this)}
+          isLogged={this.state.isLogged} />
         <div className="App-body">
           <main className="App-content">
-            <DayList onUpdateDay={this._updateDay.bind(this)} days={days} />
+            <DayList
+              isLogged={this.state.isLogged}
+              onUpdateDay={this._updateDay.bind(this)} days={days} />
             <DayForm
-              isVisible={this.state.loggedIn}
+              isLogged={this.state.isLogged}
               onCreateDay={this._createNewDay.bind(this)} />
           </main>
         </div>
         <footer className="App-footer">/fernandofragoso - 2018</footer>
       </div>
     );
+  }
+
+  //Authenticate user
+  _login(user, password) {
+    //TODO: firebase auth
+    if (user === "fernando" && password === "password") {
+      this.setState({
+        isLogged: true
+      });
+    } else {
+      //Show feedback
+    }
+  }
+
+  _logout(user, password) {
+    //TODO: firebase auth
+    this.setState({
+      isLogged: false
+    });
   }
 
   //Watch and update the days

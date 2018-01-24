@@ -40,7 +40,9 @@ export default class Day extends Component {
       balance = ""
       button = <button className="button button__edit" onClick={this._updateDay.bind(this)}>Save</button>
     } else {
-      onClickAction = this._editDay.bind(this);
+      if (this.props.isLogged) {
+        onClickAction = this._editDay.bind(this);
+      }
     }
 
     return (

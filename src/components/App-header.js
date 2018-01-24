@@ -14,10 +14,22 @@ export default class AppHeader extends Component {
 
   render() {
     let login = <button className="login__input" onClick={this._showLogin.bind(this)}>Login</button>
+
+    if (this.props.isLogged) {
+      login = <button className="login__input" onClick={this._logout.bind(this)}>Logout</button>
+    }
+
     if (this.state.isShowingLogin) {
       login = <div className="login__form">
-        <input className="login__input" placeholder="User" ref={c => { this._user = c }} />
-        <input className="login__input" placeholder="Password" ref={c => { this._password = c }} />
+        <input
+          className="login__input"
+          placeholder="User"
+          ref={c => { this._user = c }} />
+        <input
+          className="login__input"
+          type="password"
+          placeholder="Password"
+          ref={c => { this._password = c }} />
         <button className="login__input" onClick={this._login.bind(this)}>Ok</button>
         <button className="login__input" onClick={this._showLogin.bind(this)}>Cancel</button>
       </div>
@@ -38,7 +50,12 @@ export default class AppHeader extends Component {
   }
 
   _login() {
-    alert(`Login: ${this._user.value} and ${this._password.value}`);
+    this.props.onLogin(this._user.value, this._password.value);
+    this._showLogin();
+  }
+
+  _logout() {
+    this.props.onLogout();
   }
 
 }

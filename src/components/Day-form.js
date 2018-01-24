@@ -6,7 +6,7 @@ export default class DayForm extends Component {
   render() {
 
     let form = "";
-    if (this.props.isVisible) {
+    if (this.props.isLogged) {
       form = <div>
         <form className="Day-form" onSubmit={this._handleSubmit.bind(this)}>
           <input className="Day-form-date" placeholder="Date" ref={c => { this._date = c }} />
