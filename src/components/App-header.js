@@ -8,8 +8,6 @@ export default class AppHeader extends Component {
     this.state = {
       isShowingLogin: false
     }
-    let _user = "";
-    let _password = "";
   }
 
   render() {

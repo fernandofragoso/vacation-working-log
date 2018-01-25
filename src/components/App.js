@@ -13,10 +13,24 @@ export default class App extends Component {
       days: [],
       isLogged: false
     }
+
+
   }
 
   componentDidMount() {
     this._getDays();
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({
+          isLogged: true
+        });
+      } else {
+        this.setState({
+          isLogged: false
+        });
+      }
+    });
   }
 
   render() {
@@ -31,10 +45,10 @@ export default class App extends Component {
         <div className="App-body">
           <main className="App-content">
             <DayList
-              isLogged={this.state.isLogged}
+              isLogged="true"
               onUpdateDay={this._updateDay.bind(this)} days={days} />
             <DayForm
-              isLogged={this.state.isLogged}
+              isLogged="true"
               onCreateDay={this._createNewDay.bind(this)} />
           </main>
         </div>
@@ -47,18 +61,20 @@ export default class App extends Component {
   _login(user, password) {
     //TODO: firebase auth
     if (user === "fernando" && password === "password") {
-      this.setState({
-        isLogged: true
+      firebase.auth().signInAnonymously().catch(function(error) {
+        //Handle Error
       });
     } else {
       //Show feedback
     }
   }
 
-  _logout(user, password) {
+  _logout() {
     //TODO: firebase auth
-    this.setState({
-      isLogged: false
+    firebase.auth().signOut().then(function() {
+      //Sign out
+    }).catch(function(error) {
+      //Sign out error
     });
   }
 

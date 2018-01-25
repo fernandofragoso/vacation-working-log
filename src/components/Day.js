@@ -86,8 +86,8 @@ export default class Day extends Component {
     this.props.hours.forEach((hour, index) => {
       let hourArray = hour.split(":");
       if (index%2 === 1){
-          let currentHours = parseInt(hourArray[0]);
-          let currentMinutes = parseInt(hourArray[1]);
+          let currentHours = parseInt(hourArray[0], 10);
+          let currentMinutes = parseInt(hourArray[1], 10);
           if (currentMinutes >= previousMinutes) {
             balanceInMinutes += currentMinutes - previousMinutes;
             balanceInMinutes += (currentHours - previousHours) * 60;
@@ -96,8 +96,8 @@ export default class Day extends Component {
             balanceInMinutes += (currentHours - (previousHours+1)) * 60;
           }
       }
-      previousHours = parseInt(hourArray[0]);
-      previousMinutes = parseInt(hourArray[1]);
+      previousHours = parseInt(hourArray[0], 10);
+      previousMinutes = parseInt(hourArray[1], 10);
     });
 
     balanceInMinutes = balanceInMinutes - (60 * 8);
