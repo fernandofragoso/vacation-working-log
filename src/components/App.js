@@ -45,10 +45,10 @@ export default class App extends Component {
         <div className="App-body">
           <main className="App-content">
             <DayList
-              isLogged="true"
+              isLogged={this.state.isLogged}
               onUpdateDay={this._updateDay.bind(this)} days={days} />
             <DayForm
-              isLogged="true"
+              isLogged={this.state.isLogged}
               onCreateDay={this._createNewDay.bind(this)} />
           </main>
         </div>
