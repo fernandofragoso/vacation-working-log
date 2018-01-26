@@ -8,6 +8,5 @@ Todo:
 - [x] Form to add logs
 - [x] Logs edition
 - [x] Calculate Hours Balance
-- [ ] Add authentication
-- [ ] Add CSS Framework
+- [x] Add authentication
 - [ ] Host app
