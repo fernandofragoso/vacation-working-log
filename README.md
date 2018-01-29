@@ -8,5 +8,5 @@ Todo:
 - [x] Form to add logs
 - [x] Logs edition
 - [x] Calculate Hours Balance
-- [x] Add authentication
-- [ ] Host app
+- [X] Host app
+- [ ] Add Firebase Authentication 
