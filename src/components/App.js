@@ -80,7 +80,7 @@ export default class App extends Component {
 
   //Watch and update the days
   _getDays() {
-    firebase.database().ref('/days').on('value', snapshot => {
+    firebase.database().ref('/days').orderByChild('date').on('value', snapshot => {
       let days = this._snapshotToArray(snapshot);
       this.setState({days: days});
     });
