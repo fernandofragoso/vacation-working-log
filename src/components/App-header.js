@@ -20,11 +20,11 @@ export default class AppHeader extends Component {
     if (this.state.isShowingLogin) {
       login = <div className="login__form">
         <input
-          className="login__input"
+          className="login__input login__input--text"
           placeholder="User"
           ref={c => { this._user = c }} />
         <input
-          className="login__input"
+          className="login__input login__input--text"
           type="password"
           placeholder="Password"
           ref={c => { this._password = c }} />
