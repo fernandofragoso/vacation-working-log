@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'moment';
 import './Day.css';
 
 export default class Day extends Component {
@@ -57,6 +58,10 @@ export default class Day extends Component {
         {button}
       </div>
     );
+  }
+
+  _formatDate(date) {
+    return new Moment(date, "YYYY/MM/DD").format("DD/MM/YY");
   }
 
   _onMouseHandler() {

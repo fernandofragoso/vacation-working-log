@@ -9,7 +9,7 @@ export default class DayForm extends Component {
     if (this.props.isLogged) {
       form = <div>
         <form className="Day-form" onSubmit={this._handleSubmit.bind(this)}>
-          <input className="Day-form-date" placeholder="Date" ref={c => { this._date = c }} />
+          <input className="Day-form-date" placeholder="DD/MM/YY" ref={c => { this._date = c }} />
           <input className="Day-form-hours" placeholder="Hours" ref={c => { this._hours = c }} />
           <button className="button" type="submit">Add day</button>
         </form>

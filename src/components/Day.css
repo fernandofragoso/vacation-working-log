@@ -12,7 +12,7 @@
 .Day-date {
   font-weight: bold;
   text-align: center;
-  padding: 10px 30px;
+  padding: 10px;
   margin-right: 10px;
 }
 
@@ -22,7 +22,7 @@
 
 .Day-balance {
   margin-left: auto;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .Day-balance--negative {

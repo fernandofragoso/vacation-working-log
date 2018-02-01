@@ -3,6 +3,7 @@ import firebase from '../config';
 import DayList from './Day-list';
 import DayForm from './Day-form';
 import AppHeader from './App-header';
+import Moment from 'moment';
 import './App.css';
 
 export default class App extends Component {
@@ -82,15 +83,20 @@ export default class App extends Component {
   _getDays() {
     firebase.database().ref('/days').orderByChild('date').on('value', snapshot => {
       let days = this._snapshotToArray(snapshot);
+
+      days = days.map(day => {
+        day.date = this._formatDate(day.date);
+        return day;
+      });
+
       this.setState({days: days});
     });
   }
 
   //Update day on firebase
   _updateDay(day) {
-
     firebase.database().ref(`/days/${day.key}`).update({
-      date: day.date,
+      date: this._formatDateToDB(day.date),
       hours: day.hours
     });
   }
@@ -98,7 +104,7 @@ export default class App extends Component {
   //Set a new day on firebase
   _createNewDay(day) {
     firebase.database().ref('/days').push({
-      date: day.date,
+      date: this._formatDateToDB(day.date),
       hours: day.hours
     });
   }
@@ -112,5 +118,17 @@ export default class App extends Component {
         returnArr.push(item);
     });
     return returnArr;
+  }
+
+  _formatDate(date) {
+    return new Moment(date, "YYYY/MM/DD").format("DD/MM/YY");
+  }
+
+  _formatDateToDB(date) {
+    if (Moment(date, "DD/MM/YY").isValid()) {
+      return new Moment(date, "DD/MM/YY").format("YYYY/MM/DD");
+    } else {
+      return new Moment(date, "DD/MM/YYYY").format("YYYY/MM/DD");
+    }
   }
 }
